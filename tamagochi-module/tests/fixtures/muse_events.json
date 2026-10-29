@@ -1,0 +1,14 @@
+[
+  {"eventId":"fixture-chat-1","eventType":"CHAT_MESSAGE_SENT","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"meaningful":true}},
+  {"eventId":"fixture-task-start-1","eventType":"AGENT_TASK_STARTED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"taskId":"task-001"}},
+  {"eventId":"fixture-task-done-1","eventType":"AGENT_TASK_COMPLETED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"taskId":"task-001","success":true}},
+  {"eventId":"fixture-task-fail-1","eventType":"AGENT_TASK_FAILED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"taskId":"task-002"}},
+  {"eventId":"fixture-goal-new-1","eventType":"GOAL_CREATED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"goalId":"goal-001"}},
+  {"eventId":"fixture-goal-done-1","eventType":"GOAL_COMPLETED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"goalId":"goal-001","success":true}},
+  {"eventId":"fixture-approval-required-1","eventType":"APPROVAL_REQUIRED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{}},
+  {"eventId":"fixture-approval-yes-1","eventType":"APPROVAL_GRANTED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{}},
+  {"eventId":"fixture-approval-no-1","eventType":"APPROVAL_REJECTED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{}},
+  {"eventId":"fixture-memory-1","eventType":"MEMORY_UPDATED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{}},
+  {"eventId":"fixture-tool-1","eventType":"TOOL_EXECUTION_COMPLETED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"skillId":"skill-001","success":true,"isNew":true}},
+  {"eventId":"fixture-milestone-1","eventType":"MILESTONE_ACHIEVED","timestamp":"2026-10-28T15:00:00-03:00","source":"muse-agent","payload":{"milestoneId":"milestone-001","confirmed":true}}
+]

@@ -1,0 +1,13 @@
+# Runtime data, installed tools, and release artifacts
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.playwright-cli/
+# Local, per-run access credentials; never include in commits or backups.
+.access/
+*.token
+tamagochi-module/data/
+tamagochi-module/releases/
+*.sqlite3-wal
+*.sqlite3-shm

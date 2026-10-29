@@ -1,0 +1,95 @@
+Muse Companion — revisão de autenticação e consentimento da ponte
+Data/hora local: 2026-10-28 18:46:31 -03
+Python: Python 3.11.2
+
+Comando: python3 -m unittest discover -s tests -p 'test_bridge_security.py' -v
+test_authentication_and_role_separation_cover_all_sensitive_routes (test_bridge_security.BridgeHttpSecurityTests.test_authentication_and_role_separation_cover_all_sensitive_routes) ... ok
+test_consent_requires_owner_and_exact_explicit_booleans (test_bridge_security.BridgeHttpSecurityTests.test_consent_requires_owner_and_exact_explicit_booleans) ... ok
+test_credentials_and_query_strings_do_not_enter_access_logs (test_bridge_security.BridgeHttpSecurityTests.test_credentials_and_query_strings_do_not_enter_access_logs) ... ok
+test_default_off_denies_bridge_reads_and_writes_without_side_effects (test_bridge_security.BridgeHttpSecurityTests.test_default_off_denies_bridge_reads_and_writes_without_side_effects) ... ok
+test_duplicate_host_and_authorization_headers_are_rejected (test_bridge_security.BridgeHttpSecurityTests.test_duplicate_host_and_authorization_headers_are_rejected) ... ok
+test_independent_consent_scopes_minimal_ack_and_revocation (test_bridge_security.BridgeHttpSecurityTests.test_independent_consent_scopes_minimal_ack_and_revocation) ... ok
+test_origin_host_cors_and_forwarded_host_spoofing (test_bridge_security.BridgeHttpSecurityTests.test_origin_host_cors_and_forwarded_host_spoofing) ... ok
+test_owner_session_csrf_login_logout_and_bridge_cannot_use_cookie (test_bridge_security.BridgeHttpSecurityTests.test_owner_session_csrf_login_logout_and_bridge_cannot_use_cookie) ... ok
+test_restart_forgets_consent_sessions_and_old_credentials_but_keeps_pet (test_bridge_security.BridgeHttpSecurityTests.test_restart_forgets_consent_sessions_and_old_credentials_but_keeps_pet) ... ok
+test_revocation_does_not_wait_for_slow_http_body (test_bridge_security.BridgeHttpSecurityTests.test_revocation_does_not_wait_for_slow_http_body) ... ok
+test_consent_expires_automatically (test_bridge_security.BridgePolicyTests.test_consent_expires_automatically) ... ok
+test_direct_adapter_requires_key_and_consent_before_calling_service (test_bridge_security.BridgePolicyTests.test_direct_adapter_requires_key_and_consent_before_calling_service) ... ok
+test_owner_session_expiration_and_separate_capability (test_bridge_security.BridgePolicyTests.test_owner_session_expiration_and_separate_capability) ... ok
+test_revocation_waits_for_inflight_bridge_operation (test_bridge_security.BridgePolicyTests.test_revocation_waits_for_inflight_bridge_operation) ... ok
+test_session_capacity_discards_oldest_and_logout_is_safe (test_bridge_security.BridgePolicyTests.test_session_capacity_discards_oldest_and_logout_is_safe) ... ok
+test_cli_private_ephemeral_keys_and_clean_shutdown (test_bridge_security.LocalBindAndCredentialsTests.test_cli_private_ephemeral_keys_and_clean_shutdown) ... ok
+test_cli_refuses_public_bind_without_creating_runtime_data (test_bridge_security.LocalBindAndCredentialsTests.test_cli_refuses_public_bind_without_creating_runtime_data) ... ok
+test_insecure_existing_data_directory_is_rejected (test_bridge_security.LocalBindAndCredentialsTests.test_insecure_existing_data_directory_is_rejected) ... ok
+test_refuses_non_loopback_and_invalid_or_equal_credentials (test_bridge_security.LocalBindAndCredentialsTests.test_refuses_non_loopback_and_invalid_or_equal_credentials) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.639s
+
+OK
+
+Data/hora local: 2026-10-28 18:46:32 -03
+Comando: python3 -m unittest discover -s tests -q
+----------------------------------------------------------------------
+Ran 74 tests in 5.473s
+
+OK
+
+Data/hora local: 2026-10-28 18:46:37 -03
+Comando: CHROME_BIN=/tmp/chromium LD_LIBRARY_PATH=/tmp/al2023/lib NODE_PATH=/tmp/ui-check/node_modules node tools/e2e-browser.cjs
+Node: v22.22.3
+Navegador: Chromium 153.0.8010.0
+OK · sessão local; consentimento e revogação; desktop e celular; ações; 6 atributos; privacidade; autonomia; exclusão de memórias; vídeo neutro e milestone; sem chamadas externas.
+
+Data/hora local: 2026-10-28 18:46:43 -03
+Comando: PYTHONPATH=/tmp/coverage-tool COVERAGE_FILE=/tmp/muse-security-final python3 -m coverage run --branch --source=pet,app,tools -m unittest discover -s tests -q
+Coverage.py, version 7.10.7 with C extension
+Full documentation is at https://coverage.readthedocs.io/en/7.10.7
+----------------------------------------------------------------------
+Ran 74 tests in 5.677s
+
+OK
+
+Comando: PYTHONPATH=/tmp/coverage-tool COVERAGE_FILE=/tmp/muse-security-final python3 -m coverage report
+Name                           Stmts   Miss Branch BrPart  Cover
+----------------------------------------------------------------
+app.py                           356     79    150     25    78%
+pet/__init__.py                    1      0      0      0   100%
+pet/autonomy.py                   13      0      0      0   100%
+pet/bridge.py                     99      6     36      6    91%
+pet/media.py                      94      9     34      7    88%
+pet/model.py                     194     25     92     23    83%
+pet/repository.py                 75      6     16      3    90%
+pet/security.py                   57      0     16      0   100%
+pet/service.py                   360      6    106      9    97%
+tools/export_private_data.py      47     14     18      4    69%
+tools/make_release.py             56      6     18      3    88%
+----------------------------------------------------------------
+TOTAL                           1352    151    486     80    87%
+Linhas Python cobertas: 1201/1352 (88.83%).
+Ramificações Python cobertas: 396/486 (81.48%).
+Cobertura considera os módulos selecionados e não inclui JavaScript; subprocessos CLI não estão instrumentados.
+
+Limites: resultados locais como evidência textual; sem verificação independente ou auditoria externa.
+Mídia usada: fixture neutra; Chromium iniciado com --autoplay-policy=no-user-gesture-required.
+Drive/backup, mídias SL-001, integração F8/F9, autoplay normal e Android físico permanecem pendentes.
+
+Cenário HTTP reproduzível com credenciais fictícias e banco temporário
+Data/hora local: 2026-10-28 18:47:49 -03
+Comando: PYTHONPATH=. python3 tests/bridge_scenario.py
+Estado sem credencial: HTTP 401
+Estado com token da ponte: HTTP 401
+Estado com token do proprietário: HTTP 200
+Evento com token da ponte, sem consentimento: HTTP 403
+Consentimento tentando usar token da ponte: HTTP 401
+Proprietário autoriza só entrada: HTTP 200
+Evento autorizado: HTTP 200
+Resposta mínima: {"duplicate": false, "duplicateKind": null, "xpAwarded": 15}
+Contexto sem consentimento de saída: HTTP 403
+Proprietário revoga entrada e autoriza saída: HTTP 200
+Evento após revogação de entrada: HTTP 403
+Contexto com consentimento de saída: HTTP 200
+Proprietário revoga todos os escopos: HTTP 200
+Contexto após revogação: HTTP 403
+Origem hostil com X-Forwarded-Host forjado: HTTP 403
+OK — cenário isolado, sem credenciais ou dados reais.

@@ -1,0 +1,64 @@
+Muse Companion 0.1.0 — testes isolados
+Python 3.11.2
+Comando: python3 -m unittest discover -s tests -v
+
+test_invalid_activity_and_insufficient_energy_do_not_create_history (test_autonomy.AutonomyFacadeTests.test_invalid_activity_and_insufficient_energy_do_not_create_history) ... ok
+test_manual_activity_and_history_are_persistent_and_idempotent (test_autonomy.AutonomyFacadeTests.test_manual_activity_and_history_are_persistent_and_idempotent) ... ok
+test_tick_runs_one_scheduled_activity_and_respects_cancellation (test_autonomy.AutonomyFacadeTests.test_tick_runs_one_scheduled_activity_and_respects_cancellation) ... ok
+test_01_creation_values_and_schema (test_engine.EngineTests.test_01_creation_values_and_schema) ... ok
+test_01b_versioned_config_migration_preserves_state (test_engine.EngineTests.test_01b_versioned_config_migration_preserves_state) ... ok
+test_02_persist_and_restart (test_engine.EngineTests.test_02_persist_and_restart) ... ok
+test_03_mood_is_derived_and_stable (test_engine.EngineTests.test_03_mood_is_derived_and_stable) ... ok
+test_04_play_consumes_and_rest_recovers (test_engine.EngineTests.test_04_play_consumes_and_rest_recovers) ... ok
+test_05_attribute_bounds_and_no_death (test_engine.EngineTests.test_05_attribute_bounds_and_no_death) ... ok
+test_06_insufficient_energy_rolls_back_and_retry_works (test_engine.EngineTests.test_06_insufficient_energy_rolls_back_and_retry_works) ... ok
+test_07_xp_formula_and_levels (test_engine.EngineTests.test_07_xp_formula_and_levels) ... ok
+test_08_first_interaction_once_per_local_day (test_engine.EngineTests.test_08_first_interaction_once_per_local_day) ... ok
+test_09_repeat_xp_caps (test_engine.EngineTests.test_09_repeat_xp_caps) ... ok
+test_10_total_daily_cap_and_partial_award (test_engine.EngineTests.test_10_total_daily_cap_and_partial_award) ... ok
+test_11_meaningful_chat_cap_and_no_text (test_engine.EngineTests.test_11_meaningful_chat_cap_and_no_text) ... ok
+test_12_event_idempotency_and_conflicting_reuse (test_engine.EngineTests.test_12_event_idempotency_and_conflicting_reuse) ... ok
+test_13_logical_idempotency_across_distinct_event_ids (test_engine.EngineTests.test_13_logical_idempotency_across_distinct_event_ids) ... ok
+test_14_concurrent_duplicate_is_atomic (test_engine.EngineTests.test_14_concurrent_duplicate_is_atomic) ... ok
+test_15_completion_requires_explicit_success (test_engine.EngineTests.test_15_completion_requires_explicit_success) ... ok
+test_16_stage_evolution_and_milestone_outbox (test_engine.EngineTests.test_16_stage_evolution_and_milestone_outbox) ... ok
+test_17_specialization_independent_of_level (test_engine.EngineTests.test_17_specialization_independent_of_level) ... ok
+test_18_autonomy_activities_local_and_persistent (test_engine.EngineTests.test_18_autonomy_activities_local_and_persistent) ... ok
+test_19_autonomy_scheduler_respects_rest_and_runs_one_after_absence (test_engine.EngineTests.test_19_autonomy_scheduler_respects_rest_and_runs_one_after_absence) ... ok
+test_20_disable_cancels_future_cycle (test_engine.EngineTests.test_20_disable_cancels_future_cycle) ... ok
+test_21_low_energy_scheduler_records_skip (test_engine.EngineTests.test_21_low_energy_scheduler_records_skip) ... ok
+test_22_failure_rolls_back_and_scheduler_retries (test_engine.EngineTests.test_22_failure_rolls_back_and_scheduler_retries) ... ok
+test_23_abrupt_interruption_rolls_back_and_replays_due (test_engine.EngineTests.test_23_abrupt_interruption_rolls_back_and_replays_due) ... ok
+test_24_storage_failure_does_not_commit_partial_event (test_engine.EngineTests.test_24_storage_failure_does_not_commit_partial_event) ... ok
+test_25_long_absence_is_bounded_and_nonpunitive (test_engine.EngineTests.test_25_long_absence_is_bounded_and_nonpunitive) ... ok
+test_26_clock_reversal_cannot_farm_energy (test_engine.EngineTests.test_26_clock_reversal_cannot_farm_energy) ... ok
+test_27_configuration_is_persisted_and_validated (test_engine.EngineTests.test_27_configuration_is_persisted_and_validated) ... ok
+test_28_formula_and_stages_are_configurable_before_xp (test_engine.EngineTests.test_28_formula_and_stages_are_configurable_before_xp) ... ok
+test_28b_custom_initial_configuration_and_reserved_ids (test_engine.EngineTests.test_28b_custom_initial_configuration_and_reserved_ids) ... ok
+test_29_customization_is_persisted_and_validated (test_engine.EngineTests.test_29_customization_is_persisted_and_validated) ... ok
+test_29b_real_reward_unlocks_and_local_lesson (test_engine.EngineTests.test_29b_real_reward_unlocks_and_local_lesson) ... ok
+test_30_memory_deletion_preserves_dedup_ledger (test_engine.EngineTests.test_30_memory_deletion_preserves_dedup_ledger) ... ok
+test_31_all_muse_contract_fixtures (test_engine.EngineTests.test_31_all_muse_contract_fixtures) ... ok
+test_32_private_payload_rejected_and_context_minimal (test_engine.EngineTests.test_32_private_payload_rejected_and_context_minimal) ... ok
+test_33_milestone_output_confirmed_and_idempotent (test_engine.EngineTests.test_33_milestone_output_confirmed_and_idempotent) ... ok
+test_34_output_events_contract_and_cursor (test_engine.EngineTests.test_34_output_events_contract_and_cursor) ... ok
+test_35_failures_and_rejections_do_not_penalize (test_engine.EngineTests.test_35_failures_and_rejections_do_not_penalize) ... ok
+test_consistent_private_export_includes_wal_and_media (test_export.ExportTests.test_consistent_private_export_includes_wal_and_media) ... ok
+test_action_persistence_idempotency_and_context (test_http_media.HttpTests.test_action_persistence_idempotency_and_context) ... ok
+test_bridge_validates_confirmation (test_http_media.HttpTests.test_bridge_validates_confirmation) ... ok
+test_delete_memories_without_reset (test_http_media.HttpTests.test_delete_memories_without_reset) ... ok
+test_head_supports_health_checks_without_body (test_http_media.HttpTests.test_head_supports_health_checks_without_body) ... ok
+test_memory_award_and_history_pagination (test_http_media.HttpTests.test_memory_award_and_history_pagination) ... ok
+test_origin_and_json_type_are_enforced (test_http_media.HttpTests.test_origin_and_json_type_are_enforced) ... ok
+test_original_media_range_and_deletion (test_http_media.HttpTests.test_original_media_range_and_deletion) ... ok
+test_static_and_initial_state (test_http_media.HttpTests.test_static_and_initial_state) ... ok
+test_unknown_or_malformed_inputs (test_http_media.HttpTests.test_unknown_or_malformed_inputs) ... ok
+test_preserves_bytes_hash_and_reference_count (test_http_media.MediaTests.test_preserves_bytes_hash_and_reference_count) ... ok
+test_rejects_invalid_slots_and_content (test_http_media.MediaTests.test_rejects_invalid_slots_and_content) ... ok
+test_replaces_without_modifying_original (test_http_media.MediaTests.test_replaces_without_modifying_original) ... ok
+test_manifest_checksum_and_exclusion (test_release.ReleaseTests.test_manifest_checksum_and_exclusion) ... ok
+
+----------------------------------------------------------------------
+Ran 55 tests in 5.307s
+
+OK

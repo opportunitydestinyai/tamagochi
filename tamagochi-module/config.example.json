@@ -1,0 +1,119 @@
+{
+  "initialAttributes": {
+    "happiness": 75,
+    "energy": 80,
+    "curiosity": 50,
+    "knowledge": 10,
+    "bond": 20,
+    "trust": 50
+  },
+  "initialTraits": {
+    "PLAYFUL": 50,
+    "CURIOUS": 55,
+    "CREATIVE": 50,
+    "ORGANIZED": 50,
+    "SOCIAL": 50,
+    "REFLECTIVE": 50,
+    "HELPFUL": 50
+  },
+  "actionEffects": {
+    "PLAY": {
+      "happiness": 8,
+      "energy": -10,
+      "bond": 3,
+      "trust": 1
+    },
+    "REST": {
+      "energy": 20
+    },
+    "EXPLORE": {
+      "curiosity": 5,
+      "energy": -8,
+      "happiness": 2
+    },
+    "LEARN": {
+      "knowledge": 4,
+      "energy": -7,
+      "curiosity": 2
+    },
+    "CREATE": {
+      "happiness": 3,
+      "energy": -7,
+      "curiosity": 2
+    },
+    "CHAT": {
+      "happiness": 2,
+      "bond": 2,
+      "trust": 1
+    }
+  },
+  "autonomyEnergyCost": {
+    "DREAM": 2,
+    "EXPLORE": 5,
+    "EXPERIMENT": 5,
+    "JOURNAL": 2
+  },
+  "autonomyEffects": {
+    "DREAM": {},
+    "EXPLORE": {
+      "curiosity": 2
+    },
+    "EXPERIMENT": {
+      "happiness": 2
+    },
+    "JOURNAL": {}
+  },
+  "xpGains": {
+    "FIRST_INTERACTION": 5,
+    "CONVERSATION": 2,
+    "TASK": 15,
+    "GOAL": 30,
+    "SKILL": 10,
+    "LEARN": 8,
+    "CREATIVE": 8,
+    "MILESTONE": 25
+  },
+  "xpDailyLimits": {
+    "FIRST_INTERACTION": 1,
+    "CONVERSATION": 3,
+    "TASK": 5,
+    "GOAL": 3,
+    "SKILL": 3,
+    "LEARN": 5,
+    "CREATIVE": 5,
+    "MILESTONE": 3
+  },
+  "dailyXpCap": 120,
+  "xpFormula": {
+    "scale": 100,
+    "exponent": 1.5
+  },
+  "stageStarts": {
+    "AWAKENING": 1,
+    "DISCOVERY": 5,
+    "LEARNING": 10,
+    "COMPANION": 20,
+    "EXPLORER": 35,
+    "EVOLVED": 50
+  },
+  "moodThresholds": {
+    "tiredEnergy": 25,
+    "happyHappiness": 90,
+    "happyEnergy": 60,
+    "curiousCuriosity": 75,
+    "boredHappiness": 30
+  },
+  "traitStep": 2,
+  "meaningfulChatMinChars": 30,
+  "passiveEnergyPerHour": 0.5,
+  "maxElapsedHours": 24,
+  "signalMinutes": 20,
+  "specializationThreshold": 3,
+  "autonomy": {
+    "enabled": false,
+    "intervalMinutes": 60,
+    "restStartHour": 22,
+    "restEndHour": 8,
+    "timeZone": "America/Fortaleza"
+  }
+}

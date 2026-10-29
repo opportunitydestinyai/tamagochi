@@ -1,0 +1,194 @@
+REVISÃO FINAL WEB — 28/10/2026
+Evidência local; SQLite descartável; Chromium 153 headless; dias avançados simulados.
+
+=== ANTES: MEMÓRIAS COM PÁGINA ATRASADA (falha esperada) ===
+Exclusão individual com página antiga atrasada: {"shown":182,"unique":181,"total":182,"apiTotal":181}.
+Exclusão total com página antiga atrasada: {"shown":81,"total":181,"apiTotal":0}.
+AssertionError [ERR_ASSERTION]: página anterior não deve duplicar nem restaurar a contagem após exclusão individual
++ actual - expected
+
+  {
+    apiTotal: 181,
++   shown: 182,
++   total: 182,
++   unique: 181
+-   shown: 100,
+-   total: 181,
+-   unique: 100
+  }
+
+    at /home/user/tamagochi/tamagochi-module/tools/inspect-pagination.cjs:471:12
+    at async withPage (/home/user/tamagochi/tamagochi-module/tools/inspect-pagination.cjs:97:5)
+    at async /home/user/tamagochi/tamagochi-module/tools/inspect-pagination.cjs:431:3
+
+=== ANTES: DIÁRIO COM PÁGINA ATRASADA (falha esperada) ===
+Diário com atividade nova e página antiga atrasada: {"shown":23,"unique":23,"total":24,"hasMore":false,"oldLastInAPI":true,"oldLastShown":false}.
+AssertionError [ERR_ASSERTION]: a página antiga não deve ocultar registros após nova atividade
++ actual - expected
+
+  {
++   hasMore: false,
+-   hasMore: true,
+    oldLastInAPI: true,
+    oldLastShown: false,
++   shown: 23,
+-   shown: 20,
+    total: 24,
++   unique: 23
+-   unique: 20
+  }
+
+    at /home/user/tamagochi/tamagochi-module/tools/inspect-pagination.cjs:502:12
+    at async withPage (/home/user/tamagochi/tamagochi-module/tools/inspect-pagination.cjs:97:5)
+    at async /home/user/tamagochi/tamagochi-module/tools/inspect-pagination.cjs:476:54
+
+=== ANTES: PÁGINA E TOTAL DE MEMÓRIAS EM TRANSAÇÕES SEPARADAS (falha esperada) ===
+test_memory_page_and_total_share_one_snapshot_during_delete (test_http_media.HttpTests.test_memory_page_and_total_share_one_snapshot_during_delete) ... FAIL
+
+======================================================================
+FAIL: test_memory_page_and_total_share_one_snapshot_during_delete (test_http_media.HttpTests.test_memory_page_and_total_share_one_snapshot_during_delete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/tamagochi/tamagochi-module/tests/test_http_media.py", line 213, in test_memory_page_and_total_share_one_snapshot_during_delete
+    self.assertEqual((len(result['memories']), result['total'], result['hasMore']), (before_total, before_total, False))
+AssertionError: Tuples differ: (4, 0, False) != (4, 4, False)
+
+First differing element 1:
+0
+4
+
+- (4, 0, False)
+?     ^
+
++ (4, 4, False)
+?     ^
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.528s
+
+FAILED (failures=1)
+
+=== DEPOIS: python3 -m unittest discover -s tests -v ===
+test_invalid_activity_and_insufficient_energy_do_not_create_history (test_autonomy.AutonomyFacadeTests.test_invalid_activity_and_insufficient_energy_do_not_create_history) ... ok
+test_manual_activity_and_history_are_persistent_and_idempotent (test_autonomy.AutonomyFacadeTests.test_manual_activity_and_history_are_persistent_and_idempotent) ... ok
+test_tick_runs_one_scheduled_activity_and_respects_cancellation (test_autonomy.AutonomyFacadeTests.test_tick_runs_one_scheduled_activity_and_respects_cancellation) ... ok
+test_authentication_and_role_separation_cover_all_sensitive_routes (test_bridge_security.BridgeHttpSecurityTests.test_authentication_and_role_separation_cover_all_sensitive_routes) ... ok
+test_consent_requires_owner_and_exact_explicit_booleans (test_bridge_security.BridgeHttpSecurityTests.test_consent_requires_owner_and_exact_explicit_booleans) ... ok
+test_credentials_and_query_strings_do_not_enter_access_logs (test_bridge_security.BridgeHttpSecurityTests.test_credentials_and_query_strings_do_not_enter_access_logs) ... ok
+test_default_off_denies_bridge_reads_and_writes_without_side_effects (test_bridge_security.BridgeHttpSecurityTests.test_default_off_denies_bridge_reads_and_writes_without_side_effects) ... ok
+test_duplicate_host_and_authorization_headers_are_rejected (test_bridge_security.BridgeHttpSecurityTests.test_duplicate_host_and_authorization_headers_are_rejected) ... ok
+test_independent_consent_scopes_minimal_ack_and_revocation (test_bridge_security.BridgeHttpSecurityTests.test_independent_consent_scopes_minimal_ack_and_revocation) ... ok
+test_origin_host_cors_and_forwarded_host_spoofing (test_bridge_security.BridgeHttpSecurityTests.test_origin_host_cors_and_forwarded_host_spoofing) ... ok
+test_owner_session_csrf_login_logout_and_bridge_cannot_use_cookie (test_bridge_security.BridgeHttpSecurityTests.test_owner_session_csrf_login_logout_and_bridge_cannot_use_cookie) ... ok
+test_restart_forgets_consent_sessions_and_old_credentials_but_keeps_pet (test_bridge_security.BridgeHttpSecurityTests.test_restart_forgets_consent_sessions_and_old_credentials_but_keeps_pet) ... ok
+test_revocation_does_not_wait_for_slow_http_body (test_bridge_security.BridgeHttpSecurityTests.test_revocation_does_not_wait_for_slow_http_body) ... ok
+test_consent_expires_automatically (test_bridge_security.BridgePolicyTests.test_consent_expires_automatically) ... ok
+test_direct_adapter_requires_key_and_consent_before_calling_service (test_bridge_security.BridgePolicyTests.test_direct_adapter_requires_key_and_consent_before_calling_service) ... ok
+test_owner_session_expiration_and_separate_capability (test_bridge_security.BridgePolicyTests.test_owner_session_expiration_and_separate_capability) ... ok
+test_revocation_waits_for_inflight_bridge_operation (test_bridge_security.BridgePolicyTests.test_revocation_waits_for_inflight_bridge_operation) ... ok
+test_session_capacity_discards_oldest_and_logout_is_safe (test_bridge_security.BridgePolicyTests.test_session_capacity_discards_oldest_and_logout_is_safe) ... ok
+test_cli_private_ephemeral_keys_and_clean_shutdown (test_bridge_security.LocalBindAndCredentialsTests.test_cli_private_ephemeral_keys_and_clean_shutdown) ... ok
+test_cli_refuses_public_bind_without_creating_runtime_data (test_bridge_security.LocalBindAndCredentialsTests.test_cli_refuses_public_bind_without_creating_runtime_data) ... ok
+test_insecure_existing_data_directory_is_rejected (test_bridge_security.LocalBindAndCredentialsTests.test_insecure_existing_data_directory_is_rejected) ... ok
+test_refuses_non_loopback_and_invalid_or_equal_credentials (test_bridge_security.LocalBindAndCredentialsTests.test_refuses_non_loopback_and_invalid_or_equal_credentials) ... ok
+test_01_creation_values_and_schema (test_engine.EngineTests.test_01_creation_values_and_schema) ... ok
+test_01b_versioned_config_migration_preserves_state (test_engine.EngineTests.test_01b_versioned_config_migration_preserves_state) ... ok
+test_02_persist_and_restart (test_engine.EngineTests.test_02_persist_and_restart) ... ok
+test_02b_chat_state_survives_restart_and_mood_signal_expires (test_engine.EngineTests.test_02b_chat_state_survives_restart_and_mood_signal_expires) ... ok
+test_02c_latest_ui_event_cursor_tracks_only_committed_events (test_engine.EngineTests.test_02c_latest_ui_event_cursor_tracks_only_committed_events) ... ok
+test_03_mood_is_derived_and_stable (test_engine.EngineTests.test_03_mood_is_derived_and_stable) ... ok
+test_04_play_consumes_and_rest_recovers (test_engine.EngineTests.test_04_play_consumes_and_rest_recovers) ... ok
+test_05_attribute_bounds_and_no_death (test_engine.EngineTests.test_05_attribute_bounds_and_no_death) ... ok
+test_06_insufficient_energy_rolls_back_and_retry_works (test_engine.EngineTests.test_06_insufficient_energy_rolls_back_and_retry_works) ... ok
+test_07_xp_formula_and_levels (test_engine.EngineTests.test_07_xp_formula_and_levels) ... ok
+test_08_first_interaction_once_per_local_day (test_engine.EngineTests.test_08_first_interaction_once_per_local_day) ... ok
+test_09_repeat_xp_caps (test_engine.EngineTests.test_09_repeat_xp_caps) ... ok
+test_10_total_daily_cap_and_partial_award (test_engine.EngineTests.test_10_total_daily_cap_and_partial_award) ... ok
+test_11_meaningful_chat_cap_and_no_text (test_engine.EngineTests.test_11_meaningful_chat_cap_and_no_text) ... ok
+test_12_event_idempotency_and_conflicting_reuse (test_engine.EngineTests.test_12_event_idempotency_and_conflicting_reuse) ... ok
+test_13_logical_idempotency_across_distinct_event_ids (test_engine.EngineTests.test_13_logical_idempotency_across_distinct_event_ids) ... ok
+test_14_concurrent_duplicate_is_atomic (test_engine.EngineTests.test_14_concurrent_duplicate_is_atomic) ... ok
+test_15_completion_requires_explicit_success (test_engine.EngineTests.test_15_completion_requires_explicit_success) ... ok
+test_16_stage_evolution_and_milestone_outbox (test_engine.EngineTests.test_16_stage_evolution_and_milestone_outbox) ... ok
+test_17_specialization_independent_of_level (test_engine.EngineTests.test_17_specialization_independent_of_level) ... ok
+test_18_autonomy_activities_local_and_persistent (test_engine.EngineTests.test_18_autonomy_activities_local_and_persistent) ... ok
+test_19_autonomy_scheduler_respects_rest_and_runs_one_after_absence (test_engine.EngineTests.test_19_autonomy_scheduler_respects_rest_and_runs_one_after_absence) ... ok
+test_20_disable_cancels_future_cycle (test_engine.EngineTests.test_20_disable_cancels_future_cycle) ... ok
+test_21_low_energy_scheduler_records_skip (test_engine.EngineTests.test_21_low_energy_scheduler_records_skip) ... ok
+test_22_failure_rolls_back_and_scheduler_retries (test_engine.EngineTests.test_22_failure_rolls_back_and_scheduler_retries) ... ok
+test_23_abrupt_interruption_rolls_back_and_replays_due (test_engine.EngineTests.test_23_abrupt_interruption_rolls_back_and_replays_due) ... ok
+test_24_storage_failure_does_not_commit_partial_event (test_engine.EngineTests.test_24_storage_failure_does_not_commit_partial_event) ... ok
+test_25_long_absence_is_bounded_and_nonpunitive (test_engine.EngineTests.test_25_long_absence_is_bounded_and_nonpunitive) ... ok
+test_26_clock_reversal_cannot_farm_energy (test_engine.EngineTests.test_26_clock_reversal_cannot_farm_energy) ... ok
+test_27_configuration_is_persisted_and_validated (test_engine.EngineTests.test_27_configuration_is_persisted_and_validated) ... ok
+test_28_formula_and_stages_are_configurable_before_xp (test_engine.EngineTests.test_28_formula_and_stages_are_configurable_before_xp) ... ok
+test_28b_custom_initial_configuration_and_reserved_ids (test_engine.EngineTests.test_28b_custom_initial_configuration_and_reserved_ids) ... ok
+test_29_customization_is_persisted_and_validated (test_engine.EngineTests.test_29_customization_is_persisted_and_validated) ... ok
+test_29b_real_reward_unlocks_and_local_lesson (test_engine.EngineTests.test_29b_real_reward_unlocks_and_local_lesson) ... ok
+test_30_memory_deletion_preserves_dedup_ledger (test_engine.EngineTests.test_30_memory_deletion_preserves_dedup_ledger) ... ok
+test_31_all_muse_contract_fixtures (test_engine.EngineTests.test_31_all_muse_contract_fixtures) ... ok
+test_32_private_payload_rejected_and_context_minimal (test_engine.EngineTests.test_32_private_payload_rejected_and_context_minimal) ... ok
+test_33_milestone_output_confirmed_and_idempotent (test_engine.EngineTests.test_33_milestone_output_confirmed_and_idempotent) ... ok
+test_34_output_events_contract_and_cursor (test_engine.EngineTests.test_34_output_events_contract_and_cursor) ... ok
+test_35_failures_and_rejections_do_not_penalize (test_engine.EngineTests.test_35_failures_and_rejections_do_not_penalize) ... ok
+test_configured_formula_uses_configured_thresholds (test_experience_progress.ExperienceProgressTests.test_configured_formula_uses_configured_thresholds) ... ok
+test_default_level_boundaries_and_midpoint (test_experience_progress.ExperienceProgressTests.test_default_level_boundaries_and_midpoint) ... ok
+test_percentage_never_rounds_to_complete_before_next_level (test_experience_progress.ExperienceProgressTests.test_percentage_never_rounds_to_complete_before_next_level) ... ok
+test_consistent_private_export_includes_wal_and_media (test_export.ExportTests.test_consistent_private_export_includes_wal_and_media) ... ok
+test_action_persistence_idempotency_and_context (test_http_media.HttpTests.test_action_persistence_idempotency_and_context) ... ok
+test_awards_pagination_total_and_empty_page_are_consistent (test_http_media.HttpTests.test_awards_pagination_total_and_empty_page_are_consistent) ... ok
+test_bridge_validates_confirmation (test_http_media.HttpTests.test_bridge_validates_confirmation) ... ok
+test_chat_text_field_is_rejected_without_mutating_state (test_http_media.HttpTests.test_chat_text_field_is_rejected_without_mutating_state) ... ok
+test_delete_memories_without_reset (test_http_media.HttpTests.test_delete_memories_without_reset) ... ok
+test_head_supports_health_checks_without_body (test_http_media.HttpTests.test_head_supports_health_checks_without_body) ... ok
+test_memory_award_and_history_pagination (test_http_media.HttpTests.test_memory_award_and_history_pagination) ... ok
+test_memory_page_and_total_share_one_snapshot_during_delete (test_http_media.HttpTests.test_memory_page_and_total_share_one_snapshot_during_delete) ... ok
+test_origin_and_json_type_are_enforced (test_http_media.HttpTests.test_origin_and_json_type_are_enforced) ... ok
+test_original_media_range_and_deletion (test_http_media.HttpTests.test_original_media_range_and_deletion) ... ok
+test_static_and_initial_state (test_http_media.HttpTests.test_static_and_initial_state) ... ok
+test_ui_event_cursor_marks_history_boundary (test_http_media.HttpTests.test_ui_event_cursor_marks_history_boundary) ... ok
+test_unknown_or_malformed_inputs (test_http_media.HttpTests.test_unknown_or_malformed_inputs) ... ok
+test_preserves_bytes_hash_and_reference_count (test_http_media.MediaTests.test_preserves_bytes_hash_and_reference_count) ... ok
+test_rejects_invalid_slots_and_content (test_http_media.MediaTests.test_rejects_invalid_slots_and_content) ... ok
+test_replaces_without_modifying_original (test_http_media.MediaTests.test_replaces_without_modifying_original) ... ok
+test_manifest_checksum_and_exclusion (test_release.ReleaseTests.test_manifest_checksum_and_exclusion) ... ok
+
+----------------------------------------------------------------------
+Ran 83 tests in 9.557s
+
+OK
+
+=== DEPOIS: npm run test:pagination (CHROME_BIN=/tmp/chromium) ===
+
+> muse-sl001-companion-tests@0.1.0 test:pagination
+> node tools/inspect-pagination.cjs
+
+OK · teclado: atalho → título → histórico; foco preservado, aviso de quantidade, última página e retorno ao slime.
+OK · foco do registro preservado em atualização com nova concessão no início da lista.
+OK · 20→40→60→80→101→102→124→125; erros, respostas atrasadas, outra aba e recargas verificadas.
+OK · 520→521 itens, escrita entre páginas e recarga em múltiplas páginas (fixture sintética descartável).
+OK · sem sessionStorage, o botão e a atualização funcionam; recarga usa a primeira página.
+OK · botões com o mesmo defeito: memórias 100→200→300 e histórico local 20→40→45.
+Exclusão individual com página antiga atrasada: {"shown":100,"unique":100,"total":181,"apiTotal":181}.
+Exclusão total com página antiga atrasada: {"shown":0,"total":0,"apiTotal":0}.
+OK · exclusões individual e total não são revertidas visualmente por página atrasada; paginação pode ser repetida.
+OK · após outra página agir e a primeira atualizar, página antiga é descartada e a leitura repetida recupera os registros.
+Diário com atividade nova e página antiga atrasada: {"shown":20,"unique":20,"total":24,"hasMore":true,"oldLastInAPI":true,"oldLastShown":false}.
+OK · nova atividade não mistura a página antiga do Diário; paginação posterior recupera os 24 registros.
+
+=== DEPOIS: npm run test:browser (mesmo Chromium) ===
+
+> muse-sl001-companion-tests@0.1.0 test:browser
+> node tools/e2e-browser.cjs
+
+OK · sessão local; consentimento e revogação; desktop e celular; ações; 6 atributos; privacidade; autonomia; exclusão de memórias; vídeo neutro e milestone; sem chamadas externas.
+
+=== ANTERIOR: test:evolution (não repetido nesta revisão) ===
+OK · quatro atividades manuais locais persistem; agendamento continua desativado.
+Retorno de visibilidade: hidden→visible; outra página Brincar; XP 0→5 e histórico atualizados automaticamente, jornada mantida.
+Etapa de UI (dias simulados): 2692→2705 XP; Descoberta→Aprendizado, nível 10; Emblema de aprendizado; recarga preserva.
+Etapa de UI (dias simulados): 8275→8288 XP; Aprendizado→Companheiro, nível 20; Decoração halo; recarga preserva.
+Etapa de UI (dias simulados): 19816→19829 XP; Companheiro→Explorador, nível 35; Ambiente Aurora; recarga preserva.
+Histórico longo: 34293→34306 XP, nível 49→50, Explorador→Evoluído; avisos: Ideia local: um jardim lilás iluminado por estrelas de papel. +13 XP. | Novo nível: 50! Uma etapa a mais na jornada. | Nova evolução: Evoluído. Constelação e emblema.
+OK · seis estágios desbloqueados; Constelação aplicada e persistida; nenhum nível antigo reanunciado.

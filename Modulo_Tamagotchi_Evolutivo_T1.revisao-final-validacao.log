@@ -1,0 +1,27 @@
+VALIDAÇÃO LOCAL DO PACOTE — REVISÃO FINAL, 28/10/2026
+Este registro fica fora do ZIP testado. Não é verificação independente, backup ou upload remoto.
+
+=== PACOTE ===
+d636bb06a2e866992b241acab3ba8026ef1ee10966b8c9d456b3e5adb162726a  Modulo_Tamagotchi_Evolutivo_T1.zip
+sha256sum -c e ZIP testzip: OK; 81 arquivos; 80 hashes internos OK antes e após testes.
+Sem banco SQLite, tokens ou dependências instaladas; npm ci somente após extração.
+
+=== CÓPIA EXTRAÍDA: TESTES HTTP DIRECIONADOS ===
+test_memory_page_and_total_share_one_snapshot_during_delete (test_http_media.HttpTests.test_memory_page_and_total_share_one_snapshot_during_delete) ... ok
+test_memory_award_and_history_pagination (test_http_media.HttpTests.test_memory_award_and_history_pagination) ... ok
+test_delete_memories_without_reset (test_http_media.HttpTests.test_delete_memories_without_reset) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.610s
+
+OK
+
+=== CÓPIA EXTRAÍDA: PAGINATION_RACE_ONLY=1 node tools/inspect-pagination.cjs ===
+Exclusão individual com página antiga atrasada: {"shown":100,"unique":100,"total":181,"apiTotal":181}.
+Exclusão total com página antiga atrasada: {"shown":0,"total":0,"apiTotal":0}.
+OK · exclusões individual e total não são revertidas visualmente por página atrasada; paginação pode ser repetida.
+OK · após outra página agir e a primeira atualizar, página antiga é descartada e a leitura repetida recupera os registros.
+Diário com atividade nova e página antiga atrasada: {"shown":20,"unique":20,"total":24,"hasMore":true,"oldLastInAPI":true,"oldLastShown":false}.
+OK · nova atividade não mistura a página antiga do Diário; paginação posterior recupera os 24 registros.
+
+Na árvore antes do empacotamento: 83 Python, test:pagination e test:browser passaram. test:evolution é evidência da revisão anterior e não foi repetido.

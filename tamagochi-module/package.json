@@ -1,0 +1,13 @@
+{
+  "name": "muse-sl001-companion-tests",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Optional browser verification only; the prototype itself uses Python's standard library.",
+  "scripts": {
+    "test:browser": "node tools/e2e-browser.cjs",
+    "test:evolution": "node tools/e2e-evolution.cjs",
+    "test:pagination": "node tools/inspect-pagination.cjs"
+  },
+  "devDependencies": {"puppeteer-core": "25.16.0"},
+  "engines": {"node": ">=22"}
+}

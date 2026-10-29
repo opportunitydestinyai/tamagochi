@@ -1,0 +1,6 @@
+Muse Companion 0.1.0 — teste opcional de navegador
+v22.22.3
+Chromium: 153 (fixture de cores neutras, não SL-001)
+Comando: CHROME_BIN=<chromium> npm run test:browser
+
+OK · desktop e celular; ações; 6 atributos; privacidade; personalização; autonomia e cancelamento; exclusão de memórias; vídeo local e milestone; sem chamadas externas.

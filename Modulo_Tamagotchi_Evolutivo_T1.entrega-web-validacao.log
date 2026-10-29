@@ -1,0 +1,107 @@
+ENTREGA WEB — integridade e regressão local do ZIP
+Esta verificação usa uma extração local; não comprova backup, acesso de terceiros ou publicação.
+
+== SHA-256 do ZIP ==
+088bd957d9e642afcba2bbf39508b493167abe9c59bd40ad89d33b197175f2ca  Modulo_Tamagotchi_Evolutivo_T1.zip
+Modulo_Tamagotchi_Evolutivo_T1.zip: OK
+
+== Conteúdo, hashes e regressão na extração ==
+ENTREGA WEB LOCAL — verificação da cópia extraída
+Origem: Modulo_Tamagotchi_Evolutivo_T1.zip; extração temporária, não é backup independente.
+
+== Integridade da extração ==
+.gitignore: OK
+README.md: OK
+tamagochi-module/README.md: OK
+tamagochi-module/app.py: OK
+tamagochi-module/config.example.json: OK
+tamagochi-module/docs/ARQUITETURA.md: OK
+tamagochi-module/docs/ATRIBUTOS_E_EVOLUCAO.md: OK
+tamagochi-module/docs/CHECKPOINT.md: OK
+tamagochi-module/docs/CONTRATO_MUSE.md: OK
+tamagochi-module/docs/MANIFESTO.md: OK
+tamagochi-module/docs/RECURSOS_VISUAIS.md: OK
+tamagochi-module/docs/RESUMO_GERAL.md: OK
+tamagochi-module/docs/TAMAGI_ANALISE.md: OK
+tamagochi-module/package-lock.json: OK
+tamagochi-module/package.json: OK
+tamagochi-module/pet/__init__.py: OK
+tamagochi-module/pet/autonomy.py: OK
+tamagochi-module/pet/bridge.py: OK
+tamagochi-module/pet/media.py: OK
+tamagochi-module/pet/model.py: OK
+tamagochi-module/pet/repository.py: OK
+tamagochi-module/pet/security.py: OK
+tamagochi-module/pet/service.py: OK
+tamagochi-module/reports/AREA_EVOLUTIVA.md: OK
+tamagochi-module/reports/CONVIVENCIA_CONTINUA.md: OK
+tamagochi-module/reports/ENTREGA_WEB.md: OK
+tamagochi-module/reports/EXPERIENCIA_EVOLUTIVA.md: OK
+tamagochi-module/reports/FLUXOS_LOCAIS.md: OK
+tamagochi-module/reports/JORNADA_E_ACESSIBILIDADE.md: OK
+tamagochi-module/reports/PAGINACAO.md: OK
+tamagochi-module/reports/RESULTADOS.md: OK
+tamagochi-module/reports/REVISAO_FINAL.md: OK
+tamagochi-module/reports/area-evolutiva.log: OK
+tamagochi-module/reports/cobertura-python.log: OK
+tamagochi-module/reports/convivencia-continua.log: OK
+tamagochi-module/reports/entrega-web.log: OK
+tamagochi-module/reports/escopo-git.log: OK
+tamagochi-module/reports/evidencias-area/10-conversa-local.png: OK
+tamagochi-module/reports/evidencias-area/11-estagio-evoluido.png: OK
+tamagochi-module/reports/evidencias-area/12-retorno-visibilidade.png: OK
+tamagochi-module/reports/evidencias-entrega/01-meu-slime.png: OK
+tamagochi-module/reports/evidencias-entrega/02-minha-jornada.png: OK
+tamagochi-module/reports/evidencias-entrega/03-diario.png: OK
+tamagochi-module/reports/evidencias-entrega/04-memorias.png: OK
+tamagochi-module/reports/evidencias-experiencia/01-visao-inicial.png: OK
+tamagochi-module/reports/evidencias-experiencia/02-apos-brincar.png: OK
+tamagochi-module/reports/evidencias-experiencia/03-nivel2-150xp.png: OK
+tamagochi-module/reports/evidencias-experiencia/04-jornada-descoberta.png: OK
+tamagochi-module/reports/evidencias-fluxos/01-visao-inicial.png: OK
+tamagochi-module/reports/evidencias-fluxos/02-apos-brincar.png: OK
+tamagochi-module/reports/evidencias-fluxos/03-nivel2-150xp.png: OK
+tamagochi-module/reports/evidencias-fluxos/04-jornada-descoberta.png: OK
+tamagochi-module/reports/evidencias-fluxos/05-atributos-apos-acoes.png: OK
+tamagochi-module/reports/evidencias-fluxos/06-diario-local.png: OK
+tamagochi-module/reports/evidencias-fluxos/07-memorias-locais.png: OK
+tamagochi-module/reports/evidencias-fluxos/08-apos-resposta-atrasada.png: OK
+tamagochi-module/reports/evidencias-fluxos/09-evolucao-durante-uso.png: OK
+tamagochi-module/reports/experiencia-evolutiva.log: OK
+tamagochi-module/reports/fluxos-locais.log: OK
+tamagochi-module/reports/jornada-acessibilidade.log: OK
+tamagochi-module/reports/paginacao.log: OK
+tamagochi-module/reports/revisao-final.log: OK
+tamagochi-module/reports/seguranca-ponte.log: OK
+tamagochi-module/reports/testes-navegador.log: OK
+tamagochi-module/reports/testes-unitarios.log: OK
+tamagochi-module/tests/bridge_scenario.py: OK
+tamagochi-module/tests/evolution_scenario.py: OK
+tamagochi-module/tests/fixtures/muse_events.json: OK
+tamagochi-module/tests/fixtures/solid-color-test.webm: OK
+tamagochi-module/tests/test_autonomy.py: OK
+tamagochi-module/tests/test_bridge_security.py: OK
+tamagochi-module/tests/test_engine.py: OK
+tamagochi-module/tests/test_experience_progress.py: OK
+tamagochi-module/tests/test_export.py: OK
+tamagochi-module/tests/test_http_media.py: OK
+tamagochi-module/tests/test_release.py: OK
+tamagochi-module/tools/browser-test-helpers.cjs: OK
+tamagochi-module/tools/e2e-browser.cjs: OK
+tamagochi-module/tools/e2e-evolution.cjs: OK
+tamagochi-module/tools/export_private_data.py: OK
+tamagochi-module/tools/inspect-pagination.cjs: OK
+tamagochi-module/tools/make_release.py: OK
+tamagochi-module/web/app.js: OK
+tamagochi-module/web/assets/habitat.png: OK
+tamagochi-module/web/index.html: OK
+tamagochi-module/web/styles.css: OK
+
+== Dependências de teste instaladas na cópia extraída ==
+
+added 25 packages in 1s
+
+== Regressão direcionada Diário/Memórias na cópia extraída ==
+diary · registros exibidos: A tendência pesquisador se destacou nas atividades locais. | O humor do SL-001 agora é concentrado. | O humor do SL-001 agora é empolgado.
+memory · registros exibidos: A tendência pesquisador se destacou nas atividades locais. | O humor do SL-001 agora é concentrado. | O humor do SL-001 agora é empolgado.
+OK · Diário e Memórias apresentam rótulos locais, preservam os códigos no banco e persistem após recarga.

@@ -1,0 +1,27 @@
+# Checkpoint de continuidade · 28/10/2026
+
+## Estado
+
+- Trabalho independente nesta checkout/branch Arena. A base contém apenas `README.md`; não havia fontes Muse F1–F9 nem mídias aprovadas do SL-001 para alterar ou inspecionar.
+- Motor Python determinístico, SQLite transacional v2, autonomia local, interface responsiva, player adaptador, ponte com fixtures, testes e documentação estão no diretório `tamagochi-module/`. A revisão adicionou testes diretos da fachada de autonomia e corrigiu notificações que bloqueavam cliques no celular; consulte `reports/RESULTADOS.md`.
+- A revisão de experiência separou XP dentro do nível de XP acumulado e impediu o arredondamento visual prematuro a 100%, sem alterar a fórmula. Há evidências com bancos descartáveis e relógio simulado, inclusive transição 1→2 e estágio 5; veja `reports/EXPERIENCIA_EVOLUTIVA.md`; mídias aprovadas continuam ausentes.
+- A revisão de fluxos corrigiu leituras antigas que sobrescreviam visualmente ações já persistidas e serializou mutações de estado na mesma aba; veja `reports/FLUXOS_LOCAIS.md`.
+- A revisão posterior de paginação corrigiu o botão preso após `await` e mantém os itens carregados do histórico de XP ao atualizar/recarregar a mesma aba, com armazenamento disponível. Não restaura a tela ou a rolagem, nem estabelece política durável entre sessões. Os botões de Memórias/Diário tinham o mesmo erro e também foram corrigidos. Veja `reports/PAGINACAO.md`; 78 testes Python e os três testes de navegador passaram localmente.
+- A inspeção da jornada reproduziu e corrigiu a perda de foco no atalho, na expansão de XP, nas cinco ações diretas e no envio da conversa. Testes com Tab/Enter, reentrada, mudança de foco e árvore de acessibilidade do Chromium passaram; falta teste com leitor de tela e a acessibilidade do restante não foi auditada. Estados, trechos e limites: `reports/JORNADA_E_ACESSIBILIDADE.md`.
+- A revisão posterior de conversa e continuidade não reproduziu divergência que justificasse alterar o comportamento do produto. Acrescentou testes de curta/elegível, rejeição de texto na API, humor com relógio simulado, logout/login, contexto separado e reinício limpo de processo com o mesmo SQLite; a transição por conversa 797→804 XP usa fixture de dias simulados. Passaram 80 testes Python e as três suítes de navegador, sem nova medição de cobertura. Persistência, comparação entre telas, limites entre abas, trechos e resultados: `reports/CONVIVENCIA_CONTINUA.md`.
+- A revisão final dos quatro fluxos corrigiu paginação obsoleta em Memórias/Diário e leitura não atômica de página/total em Memórias. Passaram 83 testes Python e as suítes de paginação e navegador geral; a suíte anterior de evolução não foi repetida. Detalhes: `reports/REVISAO_FINAL.md`.
+- O preview anterior, sem autenticação e com bind em `0.0.0.0`, foi encerrado. A versão atual recusa bind de rede/preview e exige autenticação local, credencial de ponte distinta e consentimento por escopo; veja `CONTRATO_MUSE.md`. Credenciais giram por execução e não devem ser copiadas para o ZIP ou backup.
+- O diretório `data/preview` do preview anterior é separado e não vem no ZIP. Dados de execução e mídias privadas importadas não são incluídos automaticamente; veja o README para snapshot SQLite consistente. ZIP, hash e links permanecem sem verificação independente.
+- Google Drive conectado na revisão, mas a pasta autorizada **`Muse-REA` não foi localizada**. Nenhuma pasta foi criada, nenhum upload foi feito e não existem links verificados. **Backup solicitado pendente**, separado e não bloqueante para a revisão web.
+- Personagem definitivo, F8/F9 reais, autoplay sob política normal e Android físico: **pendentes**. A imagem ambiente é decorativa; o fixture de vídeo é apenas um padrão de cores e o teste de navegador libera autoplay por flag.
+
+## Pendências independentes (não bloqueiam a revisão web)
+
+1. Solicitar ao usuário o link da pasta `Muse-REA` ou acesso à conta correta; carregar as ferramentas do conector e localizar a pasta autorizada. Criar `Modulo_Tamagotchi_Evolutivo_T1` sem sobrescrever F1–F9. Enviar o ZIP e os arquivos solicitados; se houver dados reais, usar snapshot consistente do SQLite e incluir as mídias autorizadas. Conferir arquivos, tamanhos e hashes com os mecanismos disponíveis e fornecer links diretos. Não alegar sucesso se o conector ou verificação falhar.
+2. Receber os vídeos/posters aprovados SL-001, hashes de referência e especificação/player F8. Importar sem modificar, comparar hashes, validar cada estado, FIT/FILL, fallback e milestone com os arquivos reais. Não gerar ou desenhar um substituto.
+3. Inspecionar F9 apenas quando disponibilizada; adaptar os eventos aos esquemas reais, estudar compatibilidade de IDs, consentimento e transições. Não alterar F1–F9 nesta fase.
+4. Planejar implementação Android nativa/Room + WorkManager ou outra estratégia autorizada, preservando transações e contratos. Executar testes em dispositivo real, acessibilidade, consumo e restauração de dados. Não declarar APK ou testes físicos concluídos antes disso.
+
+## Reprodução
+
+`cd tamagochi-module && python3 app.py`; testes: `python3 -m unittest discover -s tests -v`; cenário: `PYTHONPATH=. python3 tests/evolution_scenario.py`. Testes opcionais do navegador: `npm ci`, depois `CHROME_BIN=/caminho/chromium npm run test:browser`, `npm run test:evolution` e `npm run test:pagination` com `CHROME_BIN` configurado. Veja `reports/RESULTADOS.md` para resultados e limites.
